@@ -5,7 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const naverRouter = require();
+const naverRouter = require('./routes/naverRouter');
 
 const app = express();
 var port = 5001
@@ -41,13 +41,6 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-const url = '/v1/search/shop.json?query=test';
-const headers= {
-    'X-Naver-Client-Id': 'pttbjNcjRSb3O564LKDC',
-    'X-Naver-Client-Secret': 'EEDwGdWxJX',
-}
-
 
 var server = app.listen(port, function () {
   console.log('Express listening on port', port);
