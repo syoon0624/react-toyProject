@@ -21,15 +21,14 @@ const options = {
 var express = require('express');
 var router = express.Router();
 const bodyParser = require("body-parser")
-router.use(bodyParser.urlencoded({extended: true}));
-router.use(express.json());
-
+router.use(bodyParser.urlencoded({extended: true}))
+router.use(express.json())
 
 /* GET users listing. */
 router.get('/', function(req, response, next) {
     //api 요청 보낸 후, 콜백으로 결과 받기
-    options.url = url + `?query=${encodeURI(req.query.query)}`;
-    console.log(req.query)
+    options.url = url + `?query=${encodeURI(req.query.query)}&start=${req.query.start}`;
+    console.log(req.query);
     request.get(options, function(error, res, body) {
         if (!error && res.statusCode == 200) {
             //console.log(JSON.parse(body));
